@@ -158,8 +158,48 @@ const getMenssagensUsuarioContato = function(numero, nomeContato){
 
 }
 
+const getPalavraChave = function(numero,nomeContato,palavraChave){
 
-console.log(getMenssagensUsuarioContato('11987876567','Ana Maria'))
+    let usuario = contatosUsers.contatos.whats_users
+    let telefone = String(numero)
+    let contato = String(nomeContato)
+    let menssagem = String(palavraChave)
+
+    let contatos = {
+        numero: telefone,
+        contato: contato,
+        menssagem: []
+    }
+
+    let status = false
+
+    usuario.forEach(function(item){
+        if(String(item.number) == telefone){
+            status = true 
+            item.contacts.forEach(function(itemContato){
+                if(String(itemContato.name) == contato)
+                status = true
+                itemContato.messages.forEach(function(itemContatoMenssagem){
+                    if(String(itemContatoMenssagem.content).toLowerCase().includes(menssagem.toLowerCase())){
+                        contatos.menssagem.push(itemContatoMenssagem.content)
+                        status = true
+                    }
+                })
+            })
+        }
+    })
+
+    if(status == true){
+        return contatos
+    }else{
+        return false
+    } 
+
+}
+
+
+//console.log(getPalavraChave('11987876567','Jane Smith',"hi jane"))
+//console.log(getMenssagensUsuarioContato('11987876567','Jane Smith'))
 //console.log(getConversaUsuario('11987876567'))
 //console.log(getContatosUsuario('11987876567'))
 //console.log(getInformacoesPessoais('11987876567'))

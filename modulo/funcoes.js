@@ -197,6 +197,14 @@ const getPalavraChave = function(numero,nomeContato,palavraChave){
 
 }
 
+module.exports = {
+    getInformacoesPessoais,
+    getInformacoesProfile,
+    getContatosUsuario,
+    getConversaUsuario,
+    getMenssagensUsuarioContato,
+    getPalavraChave
+}
 
 //console.log(getPalavraChave('11987876567','Jane Smith',"hi jane"))
 //console.log(getMenssagensUsuarioContato('11987876567','Jane Smith'))

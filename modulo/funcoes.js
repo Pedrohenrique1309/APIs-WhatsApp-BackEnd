@@ -177,10 +177,8 @@ const getPalavraChave = function(numero,nomeContato,palavraChave){
         if(String(item.number) == telefone){
             status = true 
             item.contacts.forEach(function(itemContato){
-                if(String(itemContato.name) == contato)
-                status = true
                 itemContato.messages.forEach(function(itemContatoMenssagem){
-                    if(String(itemContatoMenssagem.content).toLowerCase().includes(menssagem.toLowerCase())){
+                    if(String(itemContatoMenssagem.content).toLowerCase().includes(menssagem.toLowerCase()) && String(itemContato.name) == contato){
                         contatos.menssagem.push(itemContatoMenssagem.content)
                         status = true
                     }
